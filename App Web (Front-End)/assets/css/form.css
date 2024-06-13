@@ -1,0 +1,95 @@
+.avaliacao {
+	display: flex;
+	padding: 0;
+	text-align: center;
+	margin: 10px 0;
+}
+
+.container-avaliacao h6 {
+	font-size: x-large;
+	margin: 0;
+}
+
+.star-icon {
+	list-style-type: none;
+	cursor: pointer;
+	color: #04d9ff; /*para estrelas amarelas #ffe500*/
+	width: 20%;
+	font-size: 50px;
+}
+
+.star-icon::before {
+	content: "\2605"; /*cheio*/
+}
+
+.star-icon.ativo ~ .star-icon::before {
+	content: "\2606"; /*vazio*/
+}
+
+.avaliacao:hover .star-icon::before {
+	content: "\2605"; /*cheio*/
+}
+
+.star-icon:hover ~ .star-icon::before {
+	content: "\2606"; /*vazio*/
+}
+
+@media screen and (max-width: 767px) {
+	.container-avaliacao {
+		align-items: center;
+	}
+
+	#textreview {
+		background-color: #777;
+		width: 90%;
+		padding-bottom: 140px;
+		font-size: 16px;
+		text-align: left;
+		border: 2px solid #ddd;
+		border-radius: 4px;
+		transition: border-color 0.3s, box-shadow 0.3s;
+		outline: none; /* Remove o outline padrão do navegador */
+	}
+	/* Placeholder estilizado */
+	#textreview::placeholder {
+		color: #333;
+	}
+
+	/* Estilo ao focar no input */
+	#textreview:focus {
+		border-color: #007bff;
+		box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+	}
+
+	#review-h6 {
+		margin: 20px 0;
+	}
+
+	.textarea {
+		margin: 0 auto;
+		display: flex;
+		justify-content: center;
+	}
+
+	.form-submit-button {
+		margin: 20px auto;
+		background: #04d9ff;
+		color: #121212;
+		border: 1px solid #eee;
+		border-radius: 8px;
+		text-shadow: none;
+		font-size: large;
+		font-weight: bold;
+		padding: 10px 10%;
+		display: flex;
+		justify-content: right;
+	}
+
+	.form-submit-button:hover {
+		background: #04869d;
+		color: black;
+		border: 1px solid #121212;
+		border-radius: 8px;
+		text-shadow: none;
+	}
+}

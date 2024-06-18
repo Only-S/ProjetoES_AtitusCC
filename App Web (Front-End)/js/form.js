@@ -1,12 +1,15 @@
-var stars = document.querySelectorAll(".star-icon");
-document.addEventListener("click", function (e) {
-	var classStar = e.target.classList;
-
-	if (!classStar.contains("ativo")) {
-		stars.forEach(function (star) {
-			star.classList.remove("ativo");
-		});
-
-		classStar.add("ativo");
-	}
+document.querySelectorAll('.avaliacao').forEach(avaliacao => {
+    const stars = avaliacao.querySelectorAll('.star-icon');
+    
+    stars.forEach((star, index) => {
+        star.addEventListener('click', function() {
+            stars.forEach((s, i) => {
+                if (i <= index) {
+                    s.classList.add('ativo');
+                } else {
+                    s.classList.remove('ativo');
+                }
+            });
+        });
+    });
 });

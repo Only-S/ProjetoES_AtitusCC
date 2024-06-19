@@ -13,7 +13,7 @@
 .star-icon {
 	list-style-type: none;
 	cursor: pointer;
-	color: #04d9ff; /*para estrelas amarelas #ffe500*/
+	color: #bc13fe; /*para estrelas amarelas #ffe500*/
 	width: 20%;
 	font-size: 50px;
 }
@@ -23,12 +23,12 @@
 }
 
 .star-icon:not(.ativo)::before {
-    content: "\2606"; /*vazio*/
+	content: "\2606"; /*vazio*/
 }
 
 .star-icon:hover,
 .star-icon:hover ~ .star-icon {
-    color: #04d9ff;
+	color: #bc13fe;
 }
 
 @media screen and (max-width: 767px) {
@@ -54,7 +54,7 @@
 
 	/* Estilo ao focar no input */
 	#textreview:focus {
-		border-color: #007bff;
+		border-color: #bc13fe;
 		box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 	}
 
@@ -70,8 +70,8 @@
 
 	.form-submit-button {
 		margin: 20px auto;
-		background: #04d9ff;
-		color: #121212;
+		background: #bc13fe;
+		color: #ddd;
 		border: 1px solid #eee;
 		border-radius: 8px;
 		text-shadow: none;
@@ -83,7 +83,7 @@
 	}
 
 	.form-submit-button:hover {
-		background: #04869d;
+		background: #720e99;
 		color: black;
 		border: 1px solid #121212;
 		border-radius: 8px;

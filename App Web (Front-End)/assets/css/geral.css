@@ -1,5 +1,7 @@
 body {
 	background-color: #1e1e1e;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+		url("./../img/background-appweb.jpg");
 	color: #ddd;
 	margin: 0;
 	padding: 20px;

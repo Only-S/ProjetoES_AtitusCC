@@ -23,8 +23,6 @@ function getRatings() {
 		if (avaliacao) {
 			const rating = avaliacao.getAttribute("data-rating");
 			ratings[id] = rating ? parseInt(rating) : 1;
-		} else {
-			console.log("No avaliacao found for" + id); // Log para containers sem avaliação
 		}
 	});
 	return ratings;
@@ -32,6 +30,9 @@ function getRatings() {
 
 window.onload = function () {
 	const idGame = "6668e0232f4ab7ad08113cb9";
+	const apiAdress =
+		"https://cd33-2804-14d-4ca9-826d-54ee-9aec-c65d-a0f4.ngrok-free.app/reviews?idGame=" +
+		idGame;
 
 	const btnSubmit = document.getElementById("btnSubmit");
 
@@ -57,11 +58,7 @@ window.onload = function () {
 			body: JSON.stringify(body),
 		};
 
-		fetch(
-			"https://4563-2804-14d-4ca9-826d-54ee-9aec-c65d-a0f4.ngrok-free.app/reviews?idGame=" +
-				idGame,
-			options
-		)
+		fetch(apiAdress, options)
 			.then((data) => {
 				if (!data.ok) {
 					throw Error(data.status);
@@ -76,16 +73,3 @@ window.onload = function () {
 			});
 	});
 };
-
-/*
-{
-    "nota_grafico": 1,
-    "nota_trilha_sonora": 2,
-    "nota_historia": 3,
-    "nota_gameplay": 4,
-    "comentario": "Teste vídeo",
-    "usuario": "GojoEnjoyer123"
-}
-
-https://4563-2804-14d-4ca9-826d-54ee-9aec-c65d-a0f4.ngrok-free.app /reviews?nomeGame=Persona 3
-*/

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/reviews")
 public class ReviewController {
@@ -17,4 +19,11 @@ public class ReviewController {
         Review createdReview = reviewService.criaReview(review);
         return ResponseEntity.ok(createdReview);
     }
+
+    @GetMapping
+    public ResponseEntity<Optional<Review>> buscaReviewPorId(@RequestBody String reviewId) {
+        Optional<Review> reviewBuscada = reviewService.buscaReviewPorId(reviewId);
+        return ResponseEntity.ok(reviewBuscada);
+    }
+
 }

@@ -13,7 +13,7 @@
 .star-icon {
 	list-style-type: none;
 	cursor: pointer;
-	color: #bc13fe; /*para estrelas amarelas #ffe500*/
+	color: #ceb7e2;
 	width: 20%;
 	font-size: 50px;
 }
@@ -28,7 +28,7 @@
 
 .star-icon:hover,
 .star-icon:hover ~ .star-icon {
-	color: #bc13fe;
+	color: #ceb7e2;
 }
 
 @media screen and (max-width: 767px) {
@@ -37,24 +37,23 @@
 	}
 
 	#textreview {
-		background-color: #777;
+		background-color: #ddd;
 		width: 90%;
-		padding-bottom: 140px;
-		font-size: 16px;
+		padding-bottom: 60px;
+		font-size: 18px;
 		text-align: left;
 		border: 2px solid #ddd;
 		border-radius: 4px;
 		transition: border-color 0.3s, box-shadow 0.3s;
-		outline: none; /* Remove o outline padrão do navegador */
+		outline: none;
 	}
-	/* Placeholder estilizado */
+
 	#textreview::placeholder {
 		color: #333;
 	}
 
-	/* Estilo ao focar no input */
 	#textreview:focus {
-		border-color: #bc13fe;
+		border-color: #ceb7e2;
 		box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 	}
 
@@ -70,8 +69,8 @@
 
 	.form-submit-button {
 		margin: 20px auto;
-		background: #bc13fe;
-		color: #ddd;
+		background: #ceb7e2;
+		color: #000;
 		border: 1px solid #eee;
 		border-radius: 8px;
 		text-shadow: none;

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 @Document(collection = "game")
 public class Game {
     @Id
-    private String id;
+    private Object id;
     private String nome;
     private String capa_path;
     private String qrcode;
@@ -31,11 +31,11 @@ public class Game {
         this.descricao = descricao;
     }
 
-    public String getId() {
+    public Object getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Object id) {
         this.id = id;
     }
 

@@ -1,25 +1,54 @@
 package com.gamereviewer.teste_es.controller;
 
 import com.gamereviewer.teste_es.model.Game;
-import com.gamereviewer.teste_es.model.Review;
 import com.gamereviewer.teste_es.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/games")
 public class GameController {
-
     @Autowired
     private GameService gameService;
 
+    @PostMapping
+    public ResponseEntity<Game> createGame(@RequestBody Game game) {
+        Game createdGame = gameService.criaGame(game);
+        return ResponseEntity.ok(createdGame);
+    }
+
     @GetMapping
-    public ResponseEntity<Optional<Game>> buscarJogo(@RequestBody Object id){
-        Optional<Game> gameBuscado = gameService.buscarJogo(id);
-        return ResponseEntity.ok(gameBuscado);
+    public ResponseEntity<List<Game>> getAllGames() {
+        List<Game> games = gameService.getAllGames();
+        return ResponseEntity.ok(games);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Game> getGameById(@PathVariable String id) {
+        return gameService.getGameById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/nome")
+    public ResponseEntity<Game> getGameByNome(@RequestParam String nome) {
+        return gameService.getGameByNome(nome)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Game> updateGame(@PathVariable String id, @RequestBody Game game) {
+        Game updatedGame = gameService.atualizaGame(id, game);
+        return ResponseEntity.ok(updatedGame);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteGame(@PathVariable String id) {
+        gameService.deleteGame(id);
+        return ResponseEntity.noContent().build();
     }
 }

@@ -1,5 +1,6 @@
 package com.gamereviewer.teste_es.model;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -8,19 +9,19 @@ import java.util.ArrayList;
 @Document(collection = "game")
 public class Game {
     @Id
-    private Object id;
+    private ObjectId id;
     private String nome;
     private String capa_path;
     private String qrcode;
     private String executavel;
-    private ArrayList<Review> lista_reviews;
+    private ArrayList<ObjectId> lista_reviews;
     private ArrayList<String> categorias;
     private String descricao;
 
     public Game() {
     }
 
-    public Game(String id, String nome, String capa_path, String qrcode, String executavel, ArrayList<Review> lista_reviews, ArrayList<String> categorias, String descricao) {
+    public Game(ObjectId id, String nome, String capa_path, String qrcode, String executavel, ArrayList<ObjectId> lista_reviews, ArrayList<String> categorias, String descricao) {
         this.id = id;
         this.nome = nome;
         this.capa_path = capa_path;
@@ -31,11 +32,11 @@ public class Game {
         this.descricao = descricao;
     }
 
-    public Object getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(Object id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -71,11 +72,11 @@ public class Game {
         this.executavel = executavel;
     }
 
-    public ArrayList<Review> getLista_reviews() {
+    public ArrayList<ObjectId> getLista_reviews() {
         return lista_reviews;
     }
 
-    public void setLista_reviews(ArrayList<Review> lista_reviews) {
+    public void setLista_reviews(ArrayList<ObjectId> lista_reviews) {
         this.lista_reviews = lista_reviews;
     }
 

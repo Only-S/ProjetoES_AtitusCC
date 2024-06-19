@@ -1,39 +1,38 @@
 package com.gamereviewer.teste_es.model;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "review")
 public class Review {
     @Id
-    private String id;
+    private ObjectId id;
     private int nota_grafico;
     private int nota_trilha_sonora;
     private int nota_historia;
     private int nota_gameplay;
-    private String anexo;
     private String comentario;
     private String usuario;
 
     public Review() {
     }
 
-    public Review(String id, int nota_grafico, int nota_trilha_sonora, int nota_historia, int nota_gameplay, String anexo, String comentario, String usuario) {
+    public Review(ObjectId id, int nota_grafico, int nota_trilha_sonora, int nota_historia, int nota_gameplay, String comentario, String usuario) {
         this.id = id;
         this.nota_grafico = nota_grafico;
         this.nota_trilha_sonora = nota_trilha_sonora;
         this.nota_historia = nota_historia;
         this.nota_gameplay = nota_gameplay;
-        this.anexo = anexo;
         this.comentario = comentario;
         this.usuario = usuario;
     }
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -67,14 +66,6 @@ public class Review {
 
     public void setNota_gameplay(int nota_gameplay) {
         this.nota_gameplay = nota_gameplay;
-    }
-
-    public String getAnexo() {
-        return anexo;
-    }
-
-    public void setAnexo(String anexo) {
-        this.anexo = anexo;
     }
 
     public String getComentario() {

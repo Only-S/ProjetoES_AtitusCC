@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <title>Jogos em Destaque</title>
+</head>
+<body>
+    <h1>Jogos em Destaque</h1>
+    <div id="games-container">
+        {% for game in games %}
+        <div class="game" data-index="{{ loop.index0 }}">
+            <h2>{{ game.name }}</h2>
+            <img src="{{ game.image }}" alt="{{ game.name }}">
+            <div class="game-categories">
+                <strong>Categorias:</strong> {{ game.categories | join(', ') }}
+            </div>
+            <div class="game-description">
+                <strong>Sobre:</strong> {{ game.description }}
+            </div>
+            <button onclick="launchGame({{ loop.index0 }})">Iniciar Jogo</button>
+        </div>
+        {% endfor %}
+    </div>
+    <script>
+        function launchGame(index) {
+            fetch('/launch_game', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ index: index })
+            }).then(response => response.json())
+              .then(data => {
+                  if (data.status === 'success') {
+                      alert('Jogo iniciado com sucesso!');
+                  } else {
+                      alert('Erro ao iniciar o jogo: ' + data.message);
+                  }
+              });
+        }
+    </script>
+</body>
+</html>

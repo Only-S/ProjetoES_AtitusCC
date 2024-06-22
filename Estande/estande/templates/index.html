@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>Jogos em Destaque</title>
 </head>
 <body>
@@ -24,23 +23,6 @@
         </div>
         {% endfor %}
     </div>
-    <script>
-        function launchGame(index) {
-            fetch('/launch_game', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ index: index })
-            }).then(response => response.json())
-              .then(data => {
-                  if (data.status === 'success') {
-                      alert('Jogo iniciado com sucesso!');
-                  } else {
-                      alert('Erro ao iniciar o jogo: ' + data.message);
-                  }
-              });
-        }
-    </script>
+    <script src="./../static/js/script.js"></script>
 </body>
 </html>

@@ -1,9 +1,60 @@
-// URL da API que iremos usar como exemplo
-const apiUrl =
-	"https://b546-2804-14d-4ca9-826d-54ee-9aec-c65d-a0f4.ngrok-free.app/games";
+const apiUrl = "https://wondrous-evenly-catfish.ngrok-free.app/games";
+
+function createGameDiv(game) {
+	// Cria a div principal do jogo
+	const gameDiv = document.createElement("div");
+	gameDiv.className = "game-div";
+
+	// Cria a imagem do jogo
+	const gameImage = document.createElement("img");
+	gameImage.className = "img-capa";
+	gameImage.src = "./assets/img/" + game.capaPath;
+	gameImage.alt = "Capa " + game.nome;
+	gameDiv.appendChild(gameImage);
+
+	// Cria a lista de dados do jogo
+	const gameData = document.createElement("ul");
+	gameData.className = "game-data";
+
+	// Cria o título do jogo
+	const gameTitle = document.createElement("li");
+	gameTitle.className = "li-title";
+	gameTitle.textContent = game.nome;
+	gameData.appendChild(gameTitle);
+
+	// Cria o item de média
+	const gameRating = document.createElement("li");
+	gameRating.className = "li-data";
+	gameRating.textContent = "Média: " + game.mediaNotas;
+	gameData.appendChild(gameRating);
+
+	// Cria o item de número de reviews
+	const gameReviews = document.createElement("li");
+	gameReviews.className = "li-data";
+	gameReviews.textContent = "N° Reviews: " + game.quantidadeReviews;
+	gameData.appendChild(gameReviews);
+
+	// Adiciona a lista de dados ao div do jogo
+	gameDiv.appendChild(gameData);
+
+	gameDiv.addEventListener("click", function () {
+		window.location.href = "./form.html?id=" + game.id; // Redireciona para a página de review do jogo
+	});
+
+	return gameDiv;
+}
+
+// Função para adicionar os jogos à página
+function addGames(games) {
+	const container = document.querySelector(".container-catalogo");
+	games.forEach((game) => {
+		const gameElement = createGameDiv(game);
+		container.appendChild(gameElement);
+	});
+}
 
 // Função para fazer o fetch dos dados da API
-async function fetchData() {
+async function fetchData(apiUrl) {
 	try {
 		// Fazendo o fetch dos dados da API
 		const response = await fetch(apiUrl, {
@@ -27,7 +78,7 @@ async function fetchData() {
 		console.log(data);
 
 		// Chamando a função para tratar os dados
-		//handleData(data);
+		handleData(data);
 	} catch (error) {
 		console.error("Houve um problema com a requisição fetch:", error);
 	}
@@ -37,36 +88,9 @@ async function fetchData() {
 function handleData(data) {
 	// Exibindo os dados no console (pode ser substituído por outra lógica)
 	console.log(data);
-
-	// Exemplo de como iterar sobre os dados e fazer algo com cada item
-	data.forEach((item) => {
-		// Aqui você pode acessar as propriedades de cada item
-		console.log(`Post ID: ${item.id}, Title: ${item.title}`);
-	});
+	addGames(data);
 }
 
-// Chamando a função para fazer o fetch dos dados
-fetchData();
-
-/*
-
 window.onload = function () {
-	const apiAdress =
-		"https://b546-2804-14d-4ca9-826d-54ee-9aec-c65d-a0f4.ngrok-free.app/games";
-
-	const jogos = [];
-
-	fetch(apiAdress)
-		.then((data) => {
-			console.log(typeof data);
-			jogos = data.json();
-			console.log(jogos);
-		})
-		.then((data) => {
-			if (!data.ok) {
-				throw Error(data.status);
-			}
-			return data.json();
-		});
+	fetchData(apiUrl);
 };
-*/

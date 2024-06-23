@@ -1,0 +1,23 @@
+[
+	{
+		"id": "1",
+		"nome": "Diablo IV",
+		"capaPath": "capa_diabloiv.jpg",
+		"quantidadeReviews": 11,
+		"mediaNotas": 5
+	},
+	{
+		"id": "2",
+		"nome": "Valorant",
+		"capaPath": "capa_valorant.jpg",
+		"quantidadeReviews": 22,
+		"mediaNotas": 3.9
+	},
+	{
+		"id": "3",
+		"nome": "CS:GO 2",
+		"capaPath": "capa_csgo2.jpg",
+		"quantidadeReviews": 30,
+		"mediaNotas": 4.5
+	}
+]

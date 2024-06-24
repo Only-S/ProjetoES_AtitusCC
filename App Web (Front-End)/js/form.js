@@ -29,9 +29,20 @@ function getRatings() {
 }
 
 window.onload = function () {
-	const idGame = "6668e0232f4ab7ad08113cb9";
+	// Pega a URL atual
+	const urlParams = new URLSearchParams(window.location.search);
+
+	// Pega o valor do parâmetro 'id'
+	// ESPERANDO TESTAR COM QRCODE
+	const idGame = urlParams.get("id");
+
+	if (idGame == null) {
+		window.location.href = "./index.html";
+	}
+
+	// const idGame = "6668e0232f4ab7ad08113cb9";
 	const apiAdress =
-		"https://cd33-2804-14d-4ca9-826d-54ee-9aec-c65d-a0f4.ngrok-free.app/reviews?idGame=" +
+		"https://wondrous-evenly-catfish.ngrok-free.app/reviews?idGame=" +
 		idGame;
 
 	const btnSubmit = document.getElementById("btnSubmit");
@@ -40,7 +51,6 @@ window.onload = function () {
 		const ratings = getRatings();
 		const comentario = document.getElementById("textreview").value;
 		const usuario = "Anônimo";
-
 		const body = {
 			nota_grafico: ratings["grafico"],
 			nota_trilha_sonora: ratings["trilha-sonora"],
@@ -54,6 +64,7 @@ window.onload = function () {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
+				"ngrok-skip-browser-warning": "any_value",
 			},
 			body: JSON.stringify(body),
 		};
@@ -67,6 +78,7 @@ window.onload = function () {
 			})
 			.then((body) => {
 				console.log(body);
+				setTimeout(console.log("TESTE DOS 10 SEGUNDOS"), 10000);
 			})
 			.catch((e) => {
 				console.log(e);

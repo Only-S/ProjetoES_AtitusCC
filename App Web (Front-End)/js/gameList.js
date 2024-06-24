@@ -25,7 +25,7 @@ function createGameDiv(game) {
 	// Cria o item de média
 	const gameRating = document.createElement("li");
 	gameRating.className = "li-data";
-	gameRating.textContent = "Média: " + game.mediaNotas;
+	gameRating.textContent = "Média: " + game.mediaNotas.toFixed(1);
 	gameData.appendChild(gameRating);
 
 	// Cria o item de número de reviews

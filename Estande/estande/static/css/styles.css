@@ -1,7 +1,7 @@
-body {
+/* body {
     background-color: #8B4513; /* BROWN */
-    color: #FFFFFF; /* WHITE */
-    font-family: Arial, sans-serif;
+    /* color: #FFFFFF; /* WHITE */
+    /* font-family: Arial, sans-serif; 
 }
 
 .container {
@@ -9,7 +9,7 @@ body {
     margin: 0 auto;
 }
 
-h1 {
+/* h1 {
     text-align: center;
 }
 
@@ -17,9 +17,9 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
+} */
 
-.game {
+/* .game {
     background: #654321;
     margin: 10px;
     padding: 10px;
@@ -31,7 +31,7 @@ h1 {
 .game img {
     width: 100%;
     height: auto;
-}
+} */
 
 .launch-button {
     background: #FFFFFF;
@@ -45,3 +45,554 @@ h1 {
 .launch-button:hover {
     background: #FFFF99;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box !important;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background-image: url(../images/background-image.png);
+    background-size: cover; 
+    background-position: center; 
+    position: relative;
+    /* font-family: 'Sofia Sans', sans-serif; */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+		Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+		sans-serif;
+    user-select: none;
+    background-attachment: fixed;
+
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    width: 150px;
+    padding-top: 15px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    color: white;
+    font-size: 4rem;
+    text-align: center;
+}
+
+#slider {
+    position: relative;
+    width: 15%;
+    height: 22vw;
+    /* margin: 150px auto; */
+    margin: 20px auto 50px auto;
+    font-family: 'Helvetica Neue', sans-serif;
+    /* perspective: 1400px; */
+    perspective: 20000px;
+    transform-style: preserve-3d;
+}
+
+input[type=radio] {
+    position: relative;
+    top: 108%;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    margin: 0 15px 0 0;
+    opacity: 0.4;
+    transform: translateX(-83px);
+    cursor: pointer;
+  }
+  
+  
+  input[type=radio]:nth-child(5) {
+    margin-right: 0px;
+  }
+  
+  input[type=radio]:checked {
+    opacity: 1;
+  }
+
+  #slider label,
+#slider label img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover;   */
+  /* object-fit: contain; Ajusta a imagem sem cortar, mantendo a proporção */
+  left: 0;
+  top: 0;
+  color: white;
+  font-size: 70px;
+  font-weight: bold;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 400ms ease;
+}
+
+#s1:checked ~ #slide1,
+ #s2:checked ~ #slide2,
+  #s3:checked ~ #slide3,
+   #s4:checked ~ #slide4,
+    #s5:checked ~ #slide5 {
+  box-shadow: 0 13px 26px rgba(0,0,0, 0.3), 0 12px 6px rgba(0,0,0, 0.2);
+  transform: translate3d(0%, 0, 0px);
+}
+
+#s1:checked ~ #slide2,
+ #s2:checked ~ #slide3,
+  #s3:checked ~ #slide4,
+   #s4:checked ~ #slide5,
+    #s5:checked ~ #slide1 {
+  box-shadow: 0 6px 10px rgba(0,0,0, 0.3), 0 2px 2px rgba(0,0,0, 0.2);
+  transform: translate3d(20%, 0, -100px);
+}
+
+#s1:checked ~ #slide3,
+ #s2:checked ~ #slide4,
+  #s3:checked ~ #slide5,
+   #s4:checked ~ #slide1,
+    #s5:checked ~ #slide2 {
+  box-shadow: 0 1px 4px rgba(0,0,0, 0.4);
+  transform: translate3d(40%, 0, -250px);
+}
+
+#s1:checked ~ #slide5,
+ #s2:checked ~ #slide1,
+  #s3:checked ~ #slide2,
+   #s4:checked ~ #slide3,
+    #s5:checked ~ #slide4 {
+  box-shadow: 0 6px 10px rgba(0,0,0, 0.3), 0 2px 2px rgba(0,0,0, 0.2);
+  transform: translate3d(-20%, 0, -100px);
+}
+
+#s1:checked ~ #slide4,
+ #s2:checked ~ #slide5,
+  #s3:checked ~ #slide1,
+   #s4:checked ~ #slide2,
+    #s5:checked ~ #slide3 {
+  box-shadow: 0 1px 4px rgba(0,0,0, 0.4);
+  transform: translate3d(-40%, 0, -250px);
+}
+
+.infcat {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-bottom: 25px;
+
+}
+
+.categorias {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: start; */
+    /* width: 20vw; */
+}
+
+.categorias button {
+    width: 220px;
+    height: 60px;
+    background-color: #686FE2;
+    border-radius: 60px;
+    border: none;
+    font-size: 1.7rem;
+    margin-top: 20px;
+    justify-content: space-around;
+} 
+ 
+button img {
+    width: 50px;
+}
+
+.circulo-img {
+    position: absolute;
+}
+
+.img-interior-circulo {
+    position: relative;
+    width: 40px;
+}
+
+.infos-jogo {
+    display: flex;
+    color: white;
+    align-items: center;
+    /* justify-content: flex-start;  */
+    flex-direction: column;
+    /* justify-content: center; */
+    width: 20vw;
+}
+
+.infos-jogo h2 {
+    font-size: 3rem;
+}
+
+#sobre {
+    font-size: 1.7rem;
+    margin: 15px auto 3px auto;
+}
+
+.infos-jogo a {
+    color: #CEB7E2;
+    font-style: italic;
+    text-decoration: none;
+}
+
+p {
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.tags {
+    display: flex;
+    margin-top: 20px;
+}
+
+.tags p {
+    width: 60px;
+    height: 23px;
+    background-color: #AC75BA;
+    margin-right: 20px;
+}
+
+.stars {
+    display: flex;
+    align-items: center;
+    margin: 15px auto;
+}
+
+.stars p {
+    margin-right: 10px; 
+    font-size: 1.6rem;
+}
+
+.stars img {
+    width: 22px;
+    margin-right: 5px;
+}
+
+#txtinfojogados {
+    margin-top: 15px;
+}
+
+
+.categorias-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+
+.categorias-2 button {
+    /* ARRUMAR P NN FICAR COM CODIGO REPETIDO AQ */
+    width: 220px;
+    height: 60px;
+    background-color: #686FE2;
+    border-radius: 60px;
+    border: none;
+    font-size: 1.7rem;
+    margin-top: 20px;
+} 
+
+.txt-amarelado {
+    color: #F9FBC7;
+}
+
+
+.txt-amarelado span {
+    color: white;
+    font-weight: 900;
+}
+/* 
+.header-telajogo {
+    display: flex;
+    justify-content: space-evenly;
+} */
+
+.home{
+    width: 60px;
+    padding: 20px 20px;
+    position: absolute;
+    left: 0;
+}
+
+.preview {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* Centraliza os elementos horizontalmente */
+    align-items: flex-start; /* Alinha os itens no início verticalmente */
+    margin-top: 25px;
+    /* padding-bottom: 190px; */
+    position: relative;
+}
+
+.capajogo {
+    width: 16%;
+    height: 24vw;
+    margin-top: 190px;
+    margin-left: auto; /* Alinha à direita para ajustar a posição */
+    margin-right: 300px; /* Alinha à esquerda para ajustar a posição */
+    z-index: 1;
+}
+
+.img-std-fundo {
+    width: 700px;
+    position: absolute;
+    left: 46%;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+.img-std-fundo img {
+    width: 130%;
+    height: 30vw;
+}
+
+.tags-info-jogo {
+    margin: 0;
+    margin-left: 1;
+}
+
+.tags-info{
+    display: flex;
+    color: white;
+    /* width: 20vw; */
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+.sect-in-jogo {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+}
+
+.tags-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-left: 140px;
+}
+
+.btn-jogo {
+    width: 110px;
+    height: 35px;
+    border-radius: 60px;
+    border: none;
+    font-size: 1.4rem;
+    margin-top: 15px;
+}
+
+#btn-jogar {
+    background-color: #54B864;
+    margin-right: 5px;
+}
+
+#btn-review {
+    background-color: #67CCE0;
+}
+
+.sobre-jogo {
+    color: white;
+    margin-right: 30px;
+}
+
+#p-titulo-sobre {
+    margin-left: 30px;
+    text-align: start;
+    font-size: 2.7rem;
+}
+
+#p-sobre {
+    text-align: start;
+    font-size: 1.9rem;
+    margin-left: 30px;
+}
+
+.linha-sobre {
+    width: 50%;
+    margin: 15px 0;
+}
+
+.sugestoes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding: 40px;
+}
+
+.sugestoes p {
+    font-size: 1.7rem;
+}
+
+.sugestoes div button {
+    background-color: transparent;
+    border: none;
+    margin-left: 30px;
+}
+
+.seta-btn {
+    width: 23px;
+}
+
+.jogos-sugestoes {
+    margin: 0px 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.jogos-sugestoes img {
+    width: 130px;
+    margin-right: 25px;
+}
+
+.review {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    margin: 50px 30px;
+}
+
+.tituloreview {
+    text-align: start;
+    font-size: 2rem;
+    margin-bottom: 25px;
+}
+
+.div-review {
+    display: flex;
+    flex-direction: row;
+    width: 35%;
+    height: 120px;
+    background-color: #7654B8;
+    margin-bottom: 30px;
+}
+
+.profile-img {
+    width: 100px;
+    margin: 12px;
+}
+
+.div-comentario {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.div-comentario p {
+    text-align: start;
+    font-size: 1.5rem;
+}
+
+.stars5 {
+    width: 100px;
+}
+
+
+.injogo {
+    margin-left: 200px;
+    display: flex;
+    color: white;
+    align-items: start;
+    flex-direction: column;
+    width: 20vw;
+}
+
+
+.estrelas {
+    display: flex;
+}
+
+.estrelas p {
+    font-size: 1.6rem;
+}
+
+.estrelas img {
+    width: 22px;
+    margin-right: 5px;
+}
+
+.espacamento {
+    margin-top: 15px;
+}
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #7654B8;
+      margin: 15% auto; /* 15% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  .logo-modal {
+      width: 270px;
+  }
+  
+  .qrcode {
+      width: 250px;
+      margin: 20px;
+  }
+  
+  .modal-frase{
+      color: white;
+      font-size: 3rem;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: end;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }

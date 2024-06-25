@@ -1,5 +1,9 @@
 package com.gamereviewer.teste_es.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.gamereviewer.teste_es.json.ObjectIdDeserializer;
+import com.gamereviewer.teste_es.json.ObjectIdSerializer;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -7,6 +11,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "review")
 public class Review {
     @Id
+    @JsonSerialize(using = ObjectIdSerializer.class)
+    @JsonDeserialize(using = ObjectIdDeserializer.class)
     private ObjectId id;
     private int nota_grafico;
     private int nota_trilha_sonora;

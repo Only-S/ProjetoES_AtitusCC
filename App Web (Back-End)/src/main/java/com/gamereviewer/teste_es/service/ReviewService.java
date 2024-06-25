@@ -8,7 +8,6 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
@@ -26,7 +25,7 @@ public class ReviewService {
         Optional<Game> gameOptional = gameRepository.findById(idJogo);
         if (gameOptional.isPresent()) {
             Game game = gameOptional.get();
-            game.getLista_reviews().add(savedReview.getId());
+            game.getListaReviews().add(savedReview.getId());
             gameRepository.save(game);
         } else {
             throw new RuntimeException("Game not found: " + idJogo);
@@ -35,8 +34,19 @@ public class ReviewService {
         return savedReview;
     }
 
-    public Optional<Review> buscaReviewPorId(String id){
-        return reviewRepository.findById(id);
+    public Optional<Review> buscaReviewPorId(String id) {
+        try {
+            if (!ObjectId.isValid(id)) {
+                return Optional.empty();
+            }
+            return reviewRepository.findById(new ObjectId(id));
+        } catch (Exception e) {
+            System.err.println("Error fetching review: " + e.getMessage());
+            return Optional.empty();
+        }
     }
 
+    public void deleteReview(String id) {
+        reviewRepository.deleteById(new ObjectId(id));
+    }
 }

@@ -16,7 +16,9 @@ public class GlobalCorsConfig {
                         .allowedOrigins("*")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
-                        .allowCredentials(false);
+                        .exposedHeaders("Authorization", "Link", "X-Total-Count")
+                        .allowCredentials(false)
+                        .maxAge(3600);
             }
         };
     }

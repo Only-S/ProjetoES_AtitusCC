@@ -471,49 +471,6 @@ p {
     margin-right: 25px;
 }
 
-.review {
-    display: flex;
-    flex-direction: column;
-    color: white;
-    margin: 50px 30px;
-}
-
-.tituloreview {
-    text-align: start;
-    font-size: 2rem;
-    margin-bottom: 25px;
-}
-
-.div-review {
-    display: flex;
-    flex-direction: row;
-    width: 35%;
-    height: 120px;
-    background-color: #7654B8;
-    margin-bottom: 30px;
-}
-
-.profile-img {
-    width: 100px;
-    margin: 12px;
-}
-
-.div-comentario {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
-.div-comentario p {
-    text-align: start;
-    font-size: 1.5rem;
-}
-
-.stars5 {
-    width: 100px;
-}
-
-
 .injogo {
     margin-left: 200px;
     display: flex;

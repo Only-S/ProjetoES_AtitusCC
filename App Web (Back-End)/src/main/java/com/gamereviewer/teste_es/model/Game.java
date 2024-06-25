@@ -1,5 +1,9 @@
 package com.gamereviewer.teste_es.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.gamereviewer.teste_es.json.ObjectIdDeserializer;
+import com.gamereviewer.teste_es.json.ObjectIdSerializer;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,17 +13,20 @@ import java.util.ArrayList;
 @Document(collection = "game")
 public class Game {
     @Id
+    @JsonSerialize(using = ObjectIdSerializer.class)
+    @JsonDeserialize(using = ObjectIdDeserializer.class)
     private ObjectId id;
     private String nome;
     private String capa_path;
     private String qrcode;
     private String executavel;
+    @JsonSerialize(contentUsing = ObjectIdSerializer.class)
+    @JsonDeserialize(contentUsing = ObjectIdDeserializer.class)
     private ArrayList<ObjectId> lista_reviews;
     private ArrayList<String> categorias;
     private String descricao;
 
-    public Game() {
-    }
+    public Game() {}
 
     public Game(ObjectId id, String nome, String capa_path, String qrcode, String executavel, ArrayList<ObjectId> lista_reviews, ArrayList<String> categorias, String descricao) {
         this.id = id;
@@ -48,11 +55,11 @@ public class Game {
         this.nome = nome;
     }
 
-    public String getCapa_path() {
+    public String getCapaPath() {
         return capa_path;
     }
 
-    public void setCapa_path(String capa_path) {
+    public void setCapaPath(String capa_path) {
         this.capa_path = capa_path;
     }
 
@@ -72,11 +79,11 @@ public class Game {
         this.executavel = executavel;
     }
 
-    public ArrayList<ObjectId> getLista_reviews() {
+    public ArrayList<ObjectId> getListaReviews() {
         return lista_reviews;
     }
 
-    public void setLista_reviews(ArrayList<ObjectId> lista_reviews) {
+    public void setListaReviews(ArrayList<ObjectId> lista_reviews) {
         this.lista_reviews = lista_reviews;
     }
 

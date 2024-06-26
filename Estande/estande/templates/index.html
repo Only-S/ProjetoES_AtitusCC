@@ -1,81 +1,109 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/styles.css">
-    <title>Jogos em Destaque</title>
-</head>
-<body>
-    <header>
-        <img class="logo" src="../static/images/logo.png" alt="Logo da MVP">
-    </header>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../static/css/styles.css" />
+		<title>Jogos em Destaque</title>
+	</head>
+	<body>
+		<header>
+			<img
+				class="logo"
+				src="../static/images/logo.png"
+				alt="Logo da MVP"
+			/>
+		</header>
 
-    <main>
-        <h1>Jogos em Destaque</h1>
+		<main>
+			<h1>Jogos em Destaque</h1>
+		</main>
 
-    </main>
-
-
-    <div id="games-container">
-        {% for game in games %}
-        <div class="game" data-index="{{ loop.index0 }}">
-            <div id="slider">
-                <input type="radio" name="slider" id="s1" checked>
-                <input type="radio" name="slider" id="s2">
-                <input type="radio" name="slider" id="s3">
-                <input type="radio" name="slider" id="s4">
-                <input type="radio" name="slider" id="s5">
-                <label for="s1" id="slide1"> <img src="{{ game.image }}" alt="{{ game.name }}"></label>
-                <label for="s2" id="slide2"> <img src="{{ game.image }}" alt="{{ game.name }}"></label>
-                <label for="s3" id="slide3"> <img src="{{ game.image }}" alt="{{ game.name }}"></label>
-                <label for="s4" id="slide4"> <img src="{{ game.image }}" alt="{{ game.name }}"></label>
-                <label for="s5" id="slide5"> <img src="{{ game.image }}" alt="{{ game.name }}"></label>
-            </div>
-            <section class="infcat">
-                <div class="categorias">
-                    <button>Jogos Luta</button>
-                    <button>Jogos Corrida</button>
-                    <button>Jogos Tiro</button>
-                    <button> Jogos Esportes</button>
-                </div>
-                <div class="infos-jogo">
-                    <h2>{{ game.name }}</h2>
-                    <p class="txt-amarelado" id="sobre">Sobre:</p>
-                    <div class="game-description">
-                        <p>{{ game.description }} <a href="../templates/telajogo.html">Ver mais</a> </p> 
-                    </div>
-                    <div class="tags">
-                        <div class="game-categories">
-                            <!-- <strong>Categorias:</strong> {{ game.categories | join(', ') }} -->
-                        </div>
-                        <p>{{ game.categories | join(', ') }}</p>
-                        <p>{{ game.categories | join(', ') }}</p>
-                        <p>{{ game.categories | join(', ') }}</p>
-                    </div>
-                    <div class="stars">
-                        <p>Nota média</p>
-                        <img src="../static/images/star.png" alt="">
-                        <img src="../static/images/star.png" alt="">
-                        <img src="../static/images/star.png" alt="">
-                        <img src="../static/images/star.png" alt="">
-                        <img src="../static/images/star.png" alt="">
-                    </div>
-                    <p class="txt-amarelado"><span>500</span> horas jogadas</p>
-                    <p class="txt-amarelado" id="txtinfojogados">Jogado <span>45</span> vezes nos últimos 30 dias</p>
-                    
-                </div>
-                <div class="categorias-2">
-                    <button>Jogos Indie</button>
-                    <button>Jogos <br> Simulação</button>
-                    <button>Jogados <br> Recentemente</button>
-                    <button>Novos jogos</button>
-                </div>
-            </section>
-                <button onclick="launchGame({{ loop.index0 }})">Iniciar Jogo</button>
-        </div>
-        {% endfor %}
-    </div>
-    <script src="./../static/js/script.js"></script>
-</body>
+		<div id="games-container">
+			{% for game in games %}
+			<div class="game" data-index="{{ loop.index0 }}">
+				<div id="slider">
+					<input type="radio" name="slider" id="s1" checked />
+					<input type="radio" name="slider" id="s2" />
+					<input type="radio" name="slider" id="s3" />
+					<input type="radio" name="slider" id="s4" />
+					<input type="radio" name="slider" id="s5" />
+					<label for="s1" id="slide1">
+						<img src="{{ game.image }}" alt="{{ game.name }}"
+					/></label>
+					<label for="s2" id="slide2">
+						<img src="{{ game.image }}" alt="{{ game.name }}"
+					/></label>
+					<label for="s3" id="slide3">
+						<img src="{{ game.image }}" alt="{{ game.name }}"
+					/></label>
+					<label for="s4" id="slide4">
+						<img src="{{ game.image }}" alt="{{ game.name }}"
+					/></label>
+					<label for="s5" id="slide5">
+						<img src="{{ game.image }}" alt="{{ game.name }}"
+					/></label>
+				</div>
+				<section class="infcat">
+					<div class="categorias">
+						<button>Jogos Luta</button>
+						<button>Jogos Corrida</button>
+						<button>Jogos Tiro</button>
+						<button>Jogos Esportes</button>
+					</div>
+					<div class="infos-jogo">
+						<h2>{{ game.name }}</h2>
+						<p class="txt-amarelado" id="sobre">Sobre:</p>
+						<div class="game-description">
+							<p>
+								{{ game.description }}
+								<a href="../templates/telajogo.html"
+									>Ver mais</a
+								>
+							</p>
+						</div>
+						<div class="tags">
+							<div class="game-categories">
+								<!-- <strong>Categorias:</strong> {{ game.categories | join(', ') }} -->
+							</div>
+							<p>{{ game.categories | join(', ') }}</p>
+							<p>{{ game.categories | join(', ') }}</p>
+							<p>{{ game.categories | join(', ') }}</p>
+						</div>
+						<div class="stars">
+							<p>Nota média</p>
+							<img src="../static/images/star.png" alt="" />
+							<img src="../static/images/star.png" alt="" />
+							<img src="../static/images/star.png" alt="" />
+							<img src="../static/images/star.png" alt="" />
+							<img src="../static/images/star.png" alt="" />
+						</div>
+						<p class="txt-amarelado">
+							<span>500</span> horas jogadas
+						</p>
+						<p class="txt-amarelado" id="txtinfojogados">
+							Jogado <span>45</span> vezes nos últimos 30 dias
+						</p>
+					</div>
+					<div class="categorias-2">
+						<button>Jogos Indie</button>
+						<button>
+							Jogos <br />
+							Simulação
+						</button>
+						<button>
+							Jogados <br />
+							Recentemente
+						</button>
+						<button>Novos jogos</button>
+					</div>
+				</section>
+				<button onclick="launchGame({{ loop.index0 }})">
+					Iniciar Jogo
+				</button>
+			</div>
+			{% endfor %}
+		</div>
+		<script src="./../static/js/script.js"></script>
+	</body>
 </html>

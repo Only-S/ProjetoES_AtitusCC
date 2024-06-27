@@ -127,7 +127,12 @@ canvas.create_text(
     font=("Inter", 26 * -1)
 )
 
-# Function to highlight selected image
+# List of images for navigation
+images = [image_12, image_13]
+
+selected_index = 0
+highlight_rectangle = None
+
 def highlight_selected_image():
     global highlight_rectangle
     canvas.delete("highlight")  # Delete previous highlight
@@ -139,25 +144,25 @@ def highlight_selected_image():
         outline="white", width=5, tag="highlight"
     )
 
-# Initial highlight and setup
-selected_index = 0
-highlight_rectangle = None
-images = [image_12, image_13]
-
-highlight_selected_image()
+def handle_dpad_motion(hat_value):
+    global selected_index
+    if hat_value == (-1, 0):  # D-pad left
+        selected_index = (selected_index - 1) % len(images)
+        print(f"Moved left to index: {selected_index}")
+    elif hat_value == (1, 0):  # D-pad right
+        selected_index = (selected_index + 1) % len(images)
+        print(f"Moved right to index: {selected_index}")
+    highlight_selected_image()
 
 # Function to handle gamepad input
 def handle_gamepad_input():
     global selected_index
     pygame.event.pump()  # Process pygame events
     for event in pygame.event.get():
-        if event.type == pygame.JOYBUTTONDOWN:
-            if event.button == 0:  # D-pad up
-                selected_index = 0
-                highlight_selected_image()
-            elif event.button == 1:  # D-pad down
-                selected_index = 1
-                highlight_selected_image()
+        if event.type == pygame.JOYHATMOTION:
+            hat_value = joystick.get_hat(0)
+            print(f"D-pad hat value: {hat_value}")
+            handle_dpad_motion(hat_value)
 
     # Schedule next input check
     window.after(100, handle_gamepad_input)

@@ -2,6 +2,8 @@ from pathlib import Path
 import tkinter as tk
 from tkinter import Canvas, PhotoImage
 import pygame
+import subprocess
+
 
 # Initialize Pygame
 pygame.init()
@@ -21,6 +23,7 @@ ASSETS_PATH = OUTPUT_PATH / Path(r"C:\Users\lucas\Desktop\Tkinter-Designer-maste
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
+
 
 
 window = tk.Tk()
@@ -144,6 +147,14 @@ def highlight_selected_image():
         outline="white", width=5, tag="highlight"
     )
 
+
+
+
+def execute_game():
+        game_path = "D:\SteamLibrary\steamapps\common\Stardew Valley\Stardew Valley.exe"
+        subprocess.run([game_path])
+
+
 def handle_dpad_motion(hat_value):
     global selected_index
     if hat_value == (-1, 0):  # D-pad left
@@ -154,18 +165,28 @@ def handle_dpad_motion(hat_value):
         print(f"Moved right to index: {selected_index}")
     highlight_selected_image()
 
+def substitute_image_3():
+    global image_3
+    new_photoimage = PhotoImage(file=r'C:\Users\lucas\Documents\GitHub\ProjetoES_AtitusCC\build2\assets\frame0\qrcode-stardew.png')
+    canvas.itemconfig(image_3, image=new_photoimage)
+    larger_image = image_3.zoom(25)
+
 # Function to handle gamepad input
 def handle_gamepad_input():
-    global selected_index
-    pygame.event.pump()  # Process pygame events
+    global window
     for event in pygame.event.get():
         if event.type == pygame.JOYHATMOTION:
             hat_value = joystick.get_hat(0)
             print(f"D-pad hat value: {hat_value}")
             handle_dpad_motion(hat_value)
+        elif event.type == pygame.JOYBUTTONDOWN:
+            if joystick.get_button(0) and selected_index == 1:  # Assuming button 0 is the "a" button
+                execute_game()
+            elif joystick.get_button(0) and selected_index == 0:
+                substitute_image_3()
 
-    # Schedule next input check
     window.after(100, handle_gamepad_input)
+
 
 # Start gamepad input handling
 handle_gamepad_input()
